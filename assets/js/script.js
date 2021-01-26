@@ -28,22 +28,44 @@ let dental = [
 ];
 
 
+//1. Agregar las siguientes horas al arreglo de Traumatología:
 
-//Mostrar por pantalla la cantidad de consultas por cada listado (utilizar la propiedad length para ésto).
-//Mostrar por pantalla la primera y última atención de cada listado, desplegando el rut del paciente junto con la previsión, separados por un guión.
+traumoatologia.push({ hora: '9:00', especialista: 'RENE POBLETE', paciente: 'ANA GELLONA', rut: '13123329-7', prevision: 'ISAPRE' });
+traumoatologia.push({ hora: '9:30', especialista: 'MARIA SOLAR', paciente: 'RAMIRO ANDRADE', rut: '12221451-K', prevision: 'FONASA' });
+traumoatologia.push({ hora: '10:00', especialista: 'RAUL LOYOLA', paciente: 'CARMEN ISLA', rut: '10112348-3', prevision: 'ISAPRE' });
+traumoatologia.push({ hora: '10:30', especialista: 'ANTONIO LARENAS', paciente: 'PABLO LOAYZA', rut: '13453234-1', prevision: 'ISAPRE' });
+traumoatologia.push({ hora: '12:00', especialista: 'MATIAS ARAVENA', paciente: 'SUSANA POBLETE', rut: '14345656-6', prevision: 'FONASA' });
+
+//console.table(traumoatologia);
+
+
+//2. Eliminar el primer y último elemento del arreglo de Radiología.
+//Eliminar el primero
+radiologia.shift();
+
+//Eliminar el último.
+radiologia.pop();
+
+//console.table(radiologia);
+
+
+//3. Imprimir en la página HTML, la lista de consultas médicas de Dental.
 let txtTotales = document.getElementById("txt-totales");
 
-txtTotales.innerHTML = "<h2>Radiología</h2>";
-txtTotales.innerHTML = txtTotales.innerHTML + (`Cantidad de atenciones : ${radiologia.length} <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Primera atención: ${radiologia[0].paciente} - ${radiologia[0].rut} - ${radiologia[0].prevision} . <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Última atención: ${radiologia[radiologia.length - 1].paciente} - ${radiologia[radiologia.length - 1].rut} -  ${radiologia[radiologia.length - 1].prevision} . <br>`);
+txtTotales.innerHTML = "<h2>Lista consulta Dental</h2>";
 
-txtTotales.innerHTML = txtTotales.innerHTML + "<h2>Traumoatología </h2>";
-txtTotales.innerHTML = txtTotales.innerHTML + (`Cantidad de atenciones : ${traumoatologia.length} <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Primera atención: ${traumoatologia[0].paciente} - ${traumoatologia[0].rut} - ${traumoatologia[0].prevision} . <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Última atención: ${traumoatologia[traumoatologia.length - 1].paciente} - ${traumoatologia[traumoatologia.length - 1].rut} - ${traumoatologia[traumoatologia.length - 1].prevision} . <br>`);
+dental.forEach(function(item) {
+    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
+});
 
-txtTotales.innerHTML = txtTotales.innerHTML + "<h2>Dental</h2>";
-txtTotales.innerHTML = txtTotales.innerHTML + (`Cantidad de atenciones : ${dental.length} <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Primera atención: ${dental[0].paciente} - ${traumoatologia[0].rut} -  ${dental[0].prevision} . <br>`);
-txtTotales.innerHTML = txtTotales.innerHTML + (`Última atención: ${dental[dental.length - 1].paciente} - ${dental[dental.length - 1].rut} - ${dental[dental.length - 1].prevision} . <br>`);
+
+//4. Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. Para ésto, deberá unir todos los nombres de pacientes e imprimir uno por cada párrafo.
+
+let union = radiologia.concat(traumoatologia).concat(dental);
+
+console.table(union);
+
+txtTotales.innerHTML = txtTotales.innerHTML + "<h2>Lista consulta Total</h2>";
+union.forEach(function(item) {
+    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
+});
