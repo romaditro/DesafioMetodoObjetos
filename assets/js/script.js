@@ -52,7 +52,7 @@ radiologia.pop();
 //3. Imprimir en la página HTML, la lista de consultas médicas de Dental.
 let txtTotales = document.getElementById("txt-totales");
 
-txtTotales.innerHTML = "<h2>Lista consulta Dental</h2>";
+txtTotales.innerHTML = "<h2>(3) Lista consulta Dental</h2>";
 
 dental.forEach(function(item) {
     txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
@@ -63,9 +63,26 @@ dental.forEach(function(item) {
 
 let union = radiologia.concat(traumoatologia).concat(dental);
 
-console.table(union);
+//console.table(union);
 
-txtTotales.innerHTML = txtTotales.innerHTML + "<h2>Lista consulta Total</h2>";
+txtTotales.innerHTML = txtTotales.innerHTML + "<h2>(4) Lista consulta Total</h2>";
 union.forEach(function(item) {
     txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
+});
+
+//5. Modificar mediante funciones las previsiones de Dental: aquellas que indican ser FONASA cambiarlas por ISAPRE y viceversa.
+
+//console.table(dental);
+
+dental.forEach(function(item) {
+    if (item.prevision == "FONASA")
+        item.prevision = "ISAPRE";
+    else
+        item.prevision = "FONASA";
+});
+
+//console.table(dental);
+txtTotales.innerHTML = txtTotales.innerHTML + "<h2>(5) Lista consulta Dental con Prevision modificado</h2>";
+dental.forEach(function(item) {
+    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} ; ${item.especialista} ; ${item.paciente} ; ${item.rut} ; ${item.prevision}. <br>`);
 });
