@@ -55,7 +55,7 @@ let txtTotales = document.getElementById("txt-totales");
 txtTotales.innerHTML = "<h2>(3) Lista consulta Dental</h2>";
 
 dental.forEach(function(item) {
-    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
+    txtTotales.innerHTML += (`<p> ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. </p>`);
 });
 
 
