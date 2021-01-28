@@ -67,8 +67,10 @@ let union = radiologia.concat(traumoatologia).concat(dental);
 
 txtTotales.innerHTML = txtTotales.innerHTML + "<h2>(4) Lista consulta Total</h2>";
 union.forEach(function(item) {
-    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. <br>`);
+    txtTotales.innerHTML += (`<p> ${item.paciente} .</p>`);
 });
+
+
 
 //5. Modificar mediante funciones las previsiones de Dental: aquellas que indican ser FONASA cambiarlas por ISAPRE y viceversa.
 
@@ -77,12 +79,12 @@ union.forEach(function(item) {
 dental.forEach(function(item) {
     if (item.prevision == "FONASA")
         item.prevision = "ISAPRE";
-    else
+    else if (item.prevision == "ISAPRE")
         item.prevision = "FONASA";
 });
 
 //console.table(dental);
 txtTotales.innerHTML = txtTotales.innerHTML + "<h2>(5) Lista consulta Dental con Prevision modificado</h2>";
 dental.forEach(function(item) {
-    txtTotales.innerHTML = txtTotales.innerHTML + (` ${item.hora} ; ${item.especialista} ; ${item.paciente} ; ${item.rut} ; ${item.prevision}. <br>`);
+    txtTotales.innerHTML += (`<p>${item.hora} ; ${item.especialista} ; ${item.paciente} ; ${item.rut} ; ${item.prevision}. </p>`);
 });
