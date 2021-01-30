@@ -40,11 +40,9 @@ traumoatologia.push({ hora: '12:00', especialista: 'MATIAS ARAVENA', paciente: '
 
 
 //2. Eliminar el primer y último elemento del arreglo de Radiología.
-//Eliminar el primero
-radiologia.shift();
 
-//Eliminar el último.
-radiologia.pop();
+radiologia.shift(); //Eliminar el primero
+radiologia.pop(); //Eliminar el último.
 
 //console.table(radiologia);
 
@@ -54,9 +52,10 @@ let txtTotales = document.getElementById("txt-totales");
 
 txtTotales.innerHTML = "<h2>(3) Lista consulta Dental</h2>";
 
-dental.forEach(function(item) {
-    txtTotales.innerHTML += (`<p> ${item.hora} - ${item.especialista} - ${item.paciente} - ${item.rut} - ${item.prevision}. </p>`);
+dental.map(function(item) {
+    txtTotales.innerHTML += "<p>" + [item.hora, item.especialista, item.paciente, item.rut, item.prevision].join(" - ") + "</p>";
 });
+
 
 
 //4. Imprimir un listado total de todos los pacientes que se atendieron en el centro médico. Para ésto, deberá unir todos los nombres de pacientes e imprimir uno por cada párrafo.
@@ -74,17 +73,12 @@ union.forEach(function(item) {
 
 //5. Modificar mediante funciones las previsiones de Dental: aquellas que indican ser FONASA cambiarlas por ISAPRE y viceversa.
 
-//console.table(dental);
-
+txtTotales.innerHTML += "<h2>(5) Lista consulta Dental con Prevision modificado</h2>";
 dental.forEach(function(item) {
     if (item.prevision == "FONASA")
         item.prevision = "ISAPRE";
     else if (item.prevision == "ISAPRE")
         item.prevision = "FONASA";
-});
 
-//console.table(dental);
-txtTotales.innerHTML = txtTotales.innerHTML + "<h2>(5) Lista consulta Dental con Prevision modificado</h2>";
-dental.forEach(function(item) {
-    txtTotales.innerHTML += (`<p>${item.hora} ; ${item.especialista} ; ${item.paciente} ; ${item.rut} ; ${item.prevision}. </p>`);
+    txtTotales.innerHTML += "<p>" + [item.hora, item.especialista, item.paciente, item.rut, item.prevision].join(" ; ") + "</p>";
 });
